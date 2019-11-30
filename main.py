@@ -11,10 +11,9 @@ if __name__ == '__main__':
     preprocessing.assume_missing_values(data)
 
     training_data, testing_data = preprocessing.split_into_training_and_testing(data, 0.3)
-    print("Training: ", training_data)
-    print("Testing", testing_data)
-
+    attributes_number = len(training_data[0]) - 1
+    print("training data length: ", len(training_data))
     tree = DecisionTree()
-    print(tree.entropy(training_data))
-    print(tree.entropy(testing_data))
-    print(tree.entropy(data))
+
+    # Suppose we want to see the information gain for all attributes
+    print("best attribute to split on is: ", tree.get_best_attr_to_split_on(training_data, attributes_number))
